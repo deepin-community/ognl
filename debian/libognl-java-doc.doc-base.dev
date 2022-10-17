@@ -1,0 +1,9 @@
+Document: libognl-java-doc-dev
+Title: Developer Guide for OGNL
+Author: OpenSymphony
+Abstract: This is the Developer Guide provided by the OGNL library.
+Section: Programming
+
+Format: HTML
+Index: /usr/share/doc/libognl-java/DeveloperGuide/index.html
+Files: /usr/share/doc/libognl-java/DeveloperGuide/*

@@ -1,0 +1,9 @@
+Document: libognl-java-doc-lang
+Title: Language Guide for OGNL
+Author: OpenSymphony
+Abstract: This is the Language Guide provided by the OGNL library.
+Section: Programming
+
+Format: HTML
+Index: /usr/share/doc/libognl-java/LanguageGuide/index.html
+Files: /usr/share/doc/libognl-java/LanguageGuide/*

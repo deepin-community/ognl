@@ -1,0 +1,24 @@
+Description: Link the javadoc with the local JDK documentation and make it reproducible
+Origin: Damien Raude-Morvan <drazzib@debian.org>
+--- a/osbuild.xml
++++ b/osbuild.xml
+@@ -136,16 +136,16 @@
+                  destdir="${dist}/docs/api"
+                  packagenames="${package}.*"
+                  classpathref="cp"
++                 locale="en"
++                 additionalparam="-notimestamp"
+                  author="true"
+                  version="true"
+-                 overview="${src.java}/overview.html"
+                  windowTitle="${fullname} API - ${version}"
+                  doctitle="${fullname} API (${version})"
+                  footer="&lt;a href=&quot;http://www.opensymphony.com/${name}/&quot; target=&quot;_top&quot;&gt;${fullname} Project Page&lt;/a&gt;"
+                  use="true"
+                  verbose="false">
+-            <link href="http://java.sun.com/j2se/${compile.version}/docs/api/"/>
+-            <link href="http://java.sun.com/j2ee/${compile.version}/docs/api/"/>
++            <link href="file:///usr/share/doc/default-jdk/api/"/>
+         </javadoc>
+         <!-- <copy overwrite="yes" file="${docs}/main.css" tofile="${docs}/api/stylesheet.css"/> -->
+     </target>

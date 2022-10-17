@@ -1,0 +1,10 @@
+Document: libognl-java-doc-api
+Title: API Javadoc for OGNL
+Author: OpenSymphony
+Abstract: This is the API Javadoc provided by the OGNL library.
+Section: Programming
+
+Format: HTML
+Index: /usr/share/doc/libognl-java/api/index.html
+Files: /usr/share/doc/libognl-java/api/*
+

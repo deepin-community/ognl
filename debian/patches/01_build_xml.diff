@@ -1,0 +1,77 @@
+Description:
+ - build.xml: Don't fork javacc-generate (use Ant Classpath)
+ - docbook.xml: Use Xalan2 as XSLT processor
+ - docbook.xml: Fix classpath inclusion of fop.jar
+Origin: Damien Raude-Morvan <drazzib@debian.org>
+--- a/docbook.xml
++++ b/docbook.xml
+@@ -183,10 +183,13 @@
+             force="true"
+             in="${project.docbook}/${docbook.file}.xml"
+             out="${output.docbook.html}/${docbook.file}/index.html">
++            <factory name="org.apache.xalan.processor.TransformerFactoryImpl"/>
+             <param name="base.dir" expression="${output.docbook.html}/${docbook.file}/"/>
+             <param name="chunk.quietly" expression="1"/>
+             <param name="root.filename" expression="index"/>
+             <param name="use.id.as.filename" expression="1"/>
++            <param name="fop.extensions" expression="0"/>
++            <param name="fop1.extensions" expression="0"/>
+             <xmlcatalog refid="docbook.catalog"/>
+         </xslt>
+     </target>
+@@ -252,25 +255,23 @@
+             force="true"
+             in="${project.docbook}/${docbook.file}.xml"
+             out="${output.docbook.fop}/${docbook.file}.fop">
++            <factory name="org.apache.xalan.processor.TransformerFactoryImpl"/>
+             <param name="base.dir" expression="${output.docbook.html}/${docbook.file}/"/>
+             <param name="project.docbook.file" expression="${docbook.file}"/>
+             <param name="use.id.as.filename" expression="1"/>
++            <param name="fop.extensions" expression="0"/>
++            <param name="fop1.extensions" expression="0"/>
+             <xmlcatalog refid="docbook.catalog"/>
+         </xslt>
+     </target>
+ 
+     <target name="docbook-convert-fo-to-pdf" unless="uptodate.pdf">
+         <echo>Converting FO to PDF ...</echo>
+-        <java classname="org.apache.fop.apps.Fop" fork="true">
+-            <classpath>
+-                <fileset dir="${fop.dir}">
+-                    <include name="**/*.jar"/>
+-                </fileset>
+-            </classpath>
++        <exec executable="/usr/bin/fop">
+             <arg line="-q"/>
+             <arg line="-fo ${output.docbook.fop}/${docbook.file}.fop"/>
+             <arg line="-pdf ${output.docbook.pdf}/${docbook.file}.pdf"/>
+-        </java>
++        </exec>
+     </target>
+ 
+     <target name="docbook-pdf-doc" depends="docbook-init">
+--- a/build.xml
++++ b/build.xml
+@@ -59,19 +59,19 @@
+     </target>
+ 
+     <target name="javacc-generate">
+-        <java classname="org.javacc.jjtree.Main" classpathref="cp" fork="true">
++        <java classname="org.javacc.jjtree.Main" fork="false">
+             <arg value="-OUTPUT_DIRECTORY=${src.java}/ognl"/>
+             <arg value="${src.java}/ognl/ognl.jjt"/>
+         </java>
+ 
+-        <java classname="org.javacc.parser.Main" classpathref="cp" fork="true">
++        <java classname="org.javacc.parser.Main" fork="false">
+             <arg value="-OUTPUT_DIRECTORY=${src.java}/ognl"/>
+             <arg value="${src.java}/ognl/ognl.jj"/>
+         </java>
+     </target>
+ 
+     <target name="docs.impl">
+-        <ant antfile="docbook.xml" target="doc-docbook"/>
++        <ant antfile="docbook.xml" target="doc-docbook-html"/>
+ 
+         <copy todir="${dist}/docs">
+             <fileset dir="${docs}"/>

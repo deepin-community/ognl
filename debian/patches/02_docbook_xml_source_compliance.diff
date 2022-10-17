@@ -1,0 +1,50 @@
+Description:
+  Fix some duplicated entities in upstream Docbook XML
+Origin: Damien Raude-Morvan <drazzib@debian.org>
+--- a/docbook/DeveloperGuide.xml
++++ b/docbook/DeveloperGuide.xml
+@@ -33,7 +33,7 @@
+         of some sort to data transfer objects that are operated on by a view. Another example is an XML configuration file wherein values are generated via expressions which are then bound to configured objects.</para>
+ 
+         <section id="embeddingOGNL">
+-            <title id="embeddingOGNL">Embedding OGNL</title>
++            <title>Embedding OGNL</title>
+ 
+             <para>The <classname>ognl.Ognl</classname> class contains convenience methods for evaluating <acronym>OGNL</acronym> expressions. You can do this in two stages, parsing an expression into an internal form and then using that internal form
+             to either set or get the value of a property; or you can do it in a single stage, and get or set a property using the String form of the expression directly. It is more efficient to pre-compile the expression to it&#39;s parsed form,
+@@ -79,7 +79,7 @@
+         </section>
+ 
+         <section id="extendingOGNL">
+-            <title id="extendingOGNL">Extending OGNL</title>
++            <title>Extending OGNL</title>
+ 
+             <para>OGNL expressions are not evaluated in a static environment, as Java programs are. Expressions are not compiled to bytecode at the expression level based on static class reachability. The same expression can have multiple paths
+             through an object graph depending upon the root object specified and the dynamic results of the navigation. Objects that are delegated to handle all of the access to properties of objects, elements of collections, methods of objects,
+@@ -264,4 +264,4 @@
+             the <classname>Evaluation</classname>.</para>
+         </section>
+     </chapter>
+-</book>
+\ No newline at end of file
++</book>
+--- a/docbook/LanguageGuide.xml
++++ b/docbook/LanguageGuide.xml
+@@ -449,8 +449,8 @@
+         <section id="constructors">
+             <title>Calling Constructors</title>
+ 
+-            <para>You can create new objects as in Java, with the <function>new</function> operator. One difference is that you must specify the fully qualified class name for classes other than those in the java.lang package.<footnoteref
+-            linkend="classresolver" /><footnote><para>This is only true with the default ClassResolver in place. With a custom class resolver packages can be mapped in such a way that more Java-like references to classes can be made. Refer to the
++            <para>You can create new objects as in Java, with the <function>new</function> operator. One difference is that you must specify the fully qualified class name for classes other than those in the java.lang package.
++	    <footnote><para>This is only true with the default ClassResolver in place. With a custom class resolver packages can be mapped in such a way that more Java-like references to classes can be made. Refer to the
+             OGNL Developer&#39;s Guide for details on using <classname>ClassResolver</classname> class.</para></footnote> (for example, <function>new java.util.ArrayList()</function>, rather than simply <function>new ArrayList()</function>).</para>
+ 
+             <para><acronym>OGNL</acronym> chooses the right constructor to call using the same procedure it uses for overloaded method calls.</para>
+@@ -971,4 +971,4 @@
+             </table>
+         </section>
+     </appendix>
+-</book>
+\ No newline at end of file
++</book>

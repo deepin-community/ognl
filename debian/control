@@ -1,0 +1,40 @@
+Source: ognl
+Section: java
+Priority: optional
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Uploaders: Damien Raude-Morvan <drazzib@debian.org>
+Build-Depends: ant, debhelper (>= 11), default-jdk
+Build-Depends-Indep: ant-contrib,
+                     ant-optional,
+                     docbook-xml,
+                     docbook-xsl,
+                     javacc,
+                     junit4,
+                     libjavassist-java,
+                     libxalan2-java,
+                     maven-repo-helper
+Standards-Version: 4.1.4
+Vcs-Git: https://anonscm.debian.org/git/pkg-java/ognl.git
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-java/ognl.git
+Homepage: http://commons.apache.org/ognl/
+
+Package: libognl-java
+Architecture: all
+Depends: ${misc:Depends}, libjavassist-java
+Description: Java expression language
+ OGNL stands for Object-Graph Navigation Language; it is an expression language
+ for getting and setting properties of Java objects. You use the same
+ expression for both getting and setting the value of a property.
+
+Package: libognl-java-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}
+Suggests: default-jdk-doc
+Description: Java expression language - Documentation
+ OGNL stands for Object-Graph Navigation Language; it is an expression language
+ for getting and setting properties of Java objects. You use the same
+ expression for both getting and setting the value of a property.
+ .
+ This package contains Language, Developer Documentation and API of
+ OGNL software.

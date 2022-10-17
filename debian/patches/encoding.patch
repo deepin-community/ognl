@@ -1,0 +1,42 @@
+From: Markus Koschany <apo@debian.org>
+Date: Wed, 18 Apr 2018 22:01:29 +0200
+Subject: encoding
+
+Fix FTBFS with Java 9.
+
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=893380
+---
+ osbuild.xml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/osbuild.xml b/osbuild.xml
+index b58dd81..7bddc96 100644
+--- a/osbuild.xml
++++ b/osbuild.xml
+@@ -57,7 +57,7 @@
+     <target name="compile" depends="init">
+         <mkdir dir="${build.java}"/>
+         <javac srcdir="${src.java}" destdir="${build.java}" classpathref="cp" debug="on" source="${compile.version}"
+-               target="${compile.version}"/>
++               target="${compile.version}" encoding="iso-8859-1"/>
+         <copy filtering="no" todir="${build.java}">
+             <fileset dir="${src.java}">
+                 <exclude name="**/*.java"/>
+@@ -67,7 +67,7 @@
+ 
+         <mkdir dir="${build.test}"/>
+         <javac srcdir="${src.test}" destdir="${build.test}" classpath="${build.java}" source="${compile.version}"
+-               target="${compile.version}" classpathref="cp" debug="on"/>
++               target="${compile.version}" classpathref="cp" debug="on" encoding="iso-8859-1"/>
+         <copy filtering="no" todir="${build.test}">
+             <fileset dir="${src.test}">
+                 <exclude name="**/*.java"/>
+@@ -77,7 +77,7 @@
+ 
+         <mkdir dir="${build.java-test}"/>
+         <javac srcdir="${src.java}" destdir="${build.java-test}" source="${compile.version}" target="${compile.version}"
+-               classpathref="cp" debug="on"/>
++               classpathref="cp" debug="on" encoding="iso-8859-1"/>
+         <copy filtering="no" todir="${build.java-test}">
+             <fileset dir="${src.java}">
+                 <exclude name="**/*.java"/>

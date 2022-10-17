@@ -1,0 +1,12 @@
+#!/usr/bin/make -f
+
+export CLASSPATH := /usr/share/java/javassist.jar:/usr/share/java/junit4.jar:/usr/share/java/ant-trax.jar:/usr/share/java/xalan2.jar:/usr/share/java/xml-apis.jar:/usr/share/java/serializer.jar:/usr/share/java/javacc.jar:/usr/share/java/ant-contrib.jar
+
+%:
+	dh $@ --with maven-repo-helper
+
+override_dh_auto_build:
+	dh_auto_build -- -Dversion=2.7.3 javacc-generate jar docs.impl javadocs
+
+get-orig-source:
+	sh debian/orig-tar.sh 2.7.3

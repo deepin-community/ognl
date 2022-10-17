@@ -1,0 +1,91 @@
+ognl (2.7.3-7) unstable; urgency=medium
+
+  * Team upload.
+  * Declare compliance with Debian Policy 4.1.4.
+  * Switch from cdbs to dh sequencer.
+  * Add encoding.patch and fix FTBFS with Java 9. (Closes: #893380)
+
+ -- Markus Koschany <apo@debian.org>  Wed, 18 Apr 2018 22:02:31 +0200
+
+ognl (2.7.3-6) unstable; urgency=medium
+
+  * Team upload
+  * No longer build the PDF documentation to work around
+    a build failure caused by the latest FOP upgrade.
+  * Link the javadoc with the local JDK documentation
+  * Made the javadoc reproducible
+  * Moved the package to Git
+  * Standards-Version updated to 3.9.6 (no changes)
+  * debian/rules: Improved the clean target
+  * Switch to debhelper level 9
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Sun, 04 Oct 2015 19:14:03 +0200
+
+ognl (2.7.3-5) unstable; urgency=low
+
+  * d/maven.rules: Fix Maven dependency for javassist.
+  * d/control: Add - needed- Depends on libjavassist-java.
+  * d/control: Bump Standards-Version to 3.9.4.
+  * d/control: Update Vcs-* fields to canonical location.
+  * d/control: Update Homefield to new Apache Commons.
+
+ -- Damien Raude-Morvan <drazzib@debian.org>  Tue, 13 Aug 2013 22:47:05 +0200
+
+ognl (2.7.3-4) unstable; urgency=low
+
+  * Team upload
+
+  [ Damien Raude-Morvan ]
+  * d/control: Drop Depends on default-jre per Debian Java Policy as its
+    a library package.
+
+  [ Torsten Werner ]
+  * Remove Trygve from Uploaders list.
+  * Update Standards-Version: 3.9.2.
+  * Add Build-Depends: ant-contrib.
+  * Fix typo in Description.
+
+ -- Torsten Werner <twerner@debian.org>  Fri, 23 Sep 2011 21:31:23 +0200
+
+ognl (2.7.3-3) unstable; urgency=low
+
+  * libognl-java-doc: Install doc inside /usr/share/doc/libognl-java/
+  * Bump Standards-Version to 3.8.4: no changes needed
+  * Switch to 3.0 (quilt) source format
+    - debian/control: remove B-D on quilt
+    - debian/rules: remove quilt.mk
+    - debian/source/format: add format
+    - debian/README.source: removed
+
+ -- Damien Raude-Morvan <drazzib@debian.org>  Mon, 05 Apr 2010 23:56:52 +0200
+
+ognl (2.7.3-2) unstable; urgency=low
+
+  * Maven POMs:
+    - debian/control: add a Build-Depends-Indep dependency on maven-repo-helper
+    - debian/rules: use mh_installpoms and mh_installjar
+      to install the POM and the jar to the Maven repository
+      release.
+  * Bump debhelper version to >= 7
+
+ -- Damien Raude-Morvan <drazzib@debian.org>  Sun, 17 Jan 2010 20:25:33 +0100
+
+ognl (2.7.3-1) unstable; urgency=low
+
+  [ Trygve Laugstøl ]
+  * Initial Release (closes: #321476).
+
+  [ Damien Raude-Morvan ]
+  * Build-Depends on default-jdk
+  * Build a -doc package containing API and documentations (HTML and PDF)
+  * Add debian/watch
+  * Use quilt to apply patches
+  * Bump Standards-Version to 3.8.3:
+    - Add a README.source
+    - Add a get-orig-source target
+    - Move to "java" Section of the archive
+    - Add Homepage in debian/control
+    - Add Vcs-* fields
+  * Add myself as Uploaders
+
+ -- Damien Raude-Morvan <drazzib@debian.org>  Thu, 24 Sep 2009 01:14:02 +0200
